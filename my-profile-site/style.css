@@ -1,0 +1,165 @@
+/* ===== Base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F6F8FC;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4A6CF7;
+}
+
+/* ===== Soft Shadows ===== */
+.shadow-soft {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.03),
+    0 12px 32px rgba(74, 108, 247, 0.04);
+}
+
+.shadow-hover {
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 12px 40px rgba(74, 108, 247, 0.08),
+    0 24px 60px rgba(74, 108, 247, 0.04);
+}
+
+/* ===== Hero Gradient Background ===== */
+.hero-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(237, 241, 255, 0.8) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(199, 210, 254, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 10% 70%, rgba(224, 231, 255, 0.3) 0%, transparent 60%),
+    #FFFFFF;
+}
+
+/* ===== Hero Card ===== */
+.hero-card {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px rgba(74, 108, 247, 0.1),
+    0 24px 60px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Hero Text Reveal ===== */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Scroll Reveal ===== */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Skill Card ===== */
+.skill-card {
+  position: relative;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+}
+
+/* ===== Stat Card ===== */
+.stat-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 8px 24px rgba(74, 108, 247, 0.08);
+}
+
+/* ===== Project Card ===== */
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ===== Contact Card ===== */
+.contact-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 12px 40px rgba(74, 108, 247, 0.08);
+}
+
+/* ===== Navbar Scroll State ===== */
+.nav-scrolled {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Mobile Menu Hamburger Animation ===== */
+.menu-open .menu-bar:nth-child(1) {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.menu-open .menu-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open .menu-bar:nth-child(3) {
+  transform: translateY(-4px) rotate(-45deg);
+}
+
+/* ===== Mobile Menu Active ===== */
+#mobile-menu.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===== Stagger delays ===== */
+.scroll-reveal:nth-child(1) { transition-delay: 0s; }
+.scroll-reveal:nth-child(2) { transition-delay: 0.08s; }
+.scroll-reveal:nth-child(3) { transition-delay: 0.16s; }
+.scroll-reveal:nth-child(4) { transition-delay: 0.24s; }
+.scroll-reveal:nth-child(5) { transition-delay: 0.32s; }
+.scroll-reveal:nth-child(6) { transition-delay: 0.4s; }
+
+/* ===== Selection ===== */
+::selection {
+  background: rgba(74, 108, 247, 0.15);
+  color: #1A1A1A;
+}

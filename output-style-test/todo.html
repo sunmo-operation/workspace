@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 목록</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
+
+        <h1 class="text-2xl font-bold text-gray-700 mb-6 text-center">할 일 목록</h1>
+
+        <!-- 입력 영역: 텍스트 필드 + 추가 버튼 -->
+        <div class="flex gap-2 mb-6">
+            <input
+                id="todoInput"
+                type="text"
+                placeholder="할 일을 입력하세요"
+                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg
+                       focus:outline-none focus:border-blue-500"
+                onkeydown="if(event.key === 'Enter') addTodo()"
+            >
+            <button
+                onclick="addTodo()"
+                class="px-5 py-2 bg-blue-500 text-white font-bold rounded-lg
+                       hover:bg-blue-600 active:bg-blue-700 transition"
+            >
+                추가
+            </button>
+        </div>
+
+        <!-- 할 일 목록이 여기에 추가됨 -->
+        <ul id="todoList" class="space-y-3"></ul>
+
+    </div>
+
+    <script>
+        // 할 일 목록을 저장하는 배열
+        let todos = [];
+
+        // 새 할 일을 추가하는 함수
+        function addTodo() {
+            const input = document.getElementById('todoInput');
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            todos.push({ text: text, done: false });
+            input.value = '';
+            render();
+        }
+
+        // 완료 상태를 토글하는 함수 (체크/해제)
+        function toggleTodo(index) {
+            todos[index].done = !todos[index].done;
+            render();
+        }
+
+        // 할 일을 삭제하는 함수
+        function deleteTodo(index) {
+            todos.splice(index, 1);
+            render();
+        }
+
+        // 화면을 다시 그리는 함수 — 배열 데이터를 HTML로 변환
+        function render() {
+            const list = document.getElementById('todoList');
+            list.innerHTML = todos.map((todo, i) => `
+                <li class="flex items-center gap-3 bg-gray-50 rounded-lg px-4 py-3">
+                    <input
+                        type="checkbox"
+                        ${todo.done ? 'checked' : ''}
+                        onchange="toggleTodo(${i})"
+                        class="w-5 h-5 accent-blue-500 cursor-pointer"
+                    >
+                    <span class="flex-1 ${todo.done ? 'line-through text-gray-400' : 'text-gray-700'}">
+                        ${todo.text}
+                    </span>
+                    <button
+                        onclick="deleteTodo(${i})"
+                        class="text-red-400 hover:text-red-600 font-bold transition"
+                    >
+                        삭제
+                    </button>
+                </li>
+            `).join('');
+        }
+    </script>
+
+</body>
+</html>
